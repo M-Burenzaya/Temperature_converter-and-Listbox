@@ -51,42 +51,95 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fruit Selection</title>
+    <style>
+        body {
+            font-family: 'Courier New';
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px; margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        select {
+            font-family: 'Courier New';
+            font-size: 20px;
+            margin-bottom: 10px;
+            width: calc(100% - 20px);
+        }
+
+        input[type="submit"] {
+            font-family: 'Courier New';
+            font-size: 18px;
+            color: white;
+            background-color: #4caf50;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            font-family: 'Courier New';
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h2>Fruit List 1:</h2>
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-        <select name='fruits1'>
-            <?php
-            for ($i = 0; $i < count($_SESSION['fruitList1']); $i++) {
-                if ($_SESSION['fruitList1'][$i] === 1) {
-                    echo "<option value='$i'>$fruits[$i]</option>";
+    <div class="container">
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <h2>Fruit List 1:</h2>
+            <select name='fruits1' multiple size="<?php echo count($_SESSION['fruitList1']); ?>">
+                <?php
+                for ($i = 0; $i < count($_SESSION['fruitList1']); $i++) {
+                    if ($_SESSION['fruitList1'][$i] === 1) {
+                        echo "<option value='$i'>$fruits[$i]</option>";
+                    }
                 }
-            }
-            ?>
-        </select>
-        <input type="hidden" name="fruitList1" value="<?php echo base64_encode(serialize($_SESSION['fruitList1'])); ?>">
-        <input type="hidden" name="fruitList2" value="<?php echo base64_encode(serialize($_SESSION['fruitList2'])); ?>">
-        <input type="submit" value="Move to List 2">
-    </form>
+                ?>
+            </select>
+            <br>
+            <input type="hidden" name="fruitList1" value="<?php echo base64_encode(serialize($_SESSION['fruitList1'])); ?>">
+            <input type="hidden" name="fruitList2" value="<?php echo base64_encode(serialize($_SESSION['fruitList2'])); ?>">
+            <input type="submit" value="Move to List 2">
+        </form>
 
-    <h2>Fruit List 2:</h2>
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-        <select name='fruits2'>
-            <?php
-            for ($i = 0; $i < count($_SESSION['fruitList2']); $i++) {
-                if ($_SESSION['fruitList2'][$i] === 1) {
-                    echo "<option value='$i'>$fruits[$i]</option>";
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <h2>Fruit List 2:</h2>
+            <select name='fruits2' multiple size="<?php echo count($_SESSION['fruitList2']); ?>">
+                <?php
+                for ($i = 0; $i < count($_SESSION['fruitList2']); $i++) {
+                    if ($_SESSION['fruitList2'][$i] === 1) {
+                        echo "<option value='$i'>$fruits[$i]</option>";
+                    }
                 }
-            }
-            ?>
-        </select>
-        <input type="hidden" name="fruitList1" value="<?php echo base64_encode(serialize($_SESSION['fruitList1'])); ?>">
-        <input type="hidden" name="fruitList2" value="<?php echo base64_encode(serialize($_SESSION['fruitList2'])); ?>">
-        <input type="submit" value="Move to List 1">
-    </form>
+                ?>
+            </select>
+            <br>
+            <input type="hidden" name="fruitList1" value="<?php echo base64_encode(serialize($_SESSION['fruitList1'])); ?>">
+            <input type="hidden" name="fruitList2" value="<?php echo base64_encode(serialize($_SESSION['fruitList2'])); ?>">
+            <input type="submit" value="Move to List 1">
+        </form>
+    </div>
 
 </body>
 
 </html>
+
