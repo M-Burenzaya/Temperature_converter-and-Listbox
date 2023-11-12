@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {            //Форм илгээг�
             <br>
             <input type="hidden" name="fruitList1" value="<?php echo base64_encode(serialize($_SESSION['fruitList1'])); ?>">
             <input type="hidden" name="fruitList2" value="<?php echo base64_encode(serialize($_SESSION['fruitList2'])); ?>">
-            <input type="submit" value="Жагсаалт 1 - рүү">
+            <input type="submit" value="Жагсаалт 2 - руу">
         </form>
 
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {            //Форм илгээг�
             <br>
             <input type="hidden" name="fruitList1" value="<?php echo base64_encode(serialize($_SESSION['fruitList1'])); ?>">
             <input type="hidden" name="fruitList2" value="<?php echo base64_encode(serialize($_SESSION['fruitList2'])); ?>">
-            <input type="submit" value="Жагсаалт 2 - руу">
+            <input type="submit" value="Жагсаалт 1 - рүү">
         </form>
     </div>
 
